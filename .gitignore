@@ -1,0 +1,20 @@
+# Mac
+.DS_Store
+
+# Vim
+*~
+*.swp
+
+# Python
+*.py[cod]
+__pycache__
+
+# Sphinx
+_build
+
+# direnv
+.direnv
+
+
+
+
