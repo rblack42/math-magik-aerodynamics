@@ -1,1 +1,6 @@
 jupyter-book
+sympy
+pint
+matplotlib
+git+git://github.com/mkrphys/ipython-tikzmagic.git
+

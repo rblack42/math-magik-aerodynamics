@@ -10,5 +10,10 @@ reqs:
 
 .PHONY: build
 build:
-	jupyter-book build --path-output docs mmbook/
+	jupyter-book build mmbook/
 	cp -R mmbook/_build/html/ docs
+
+.PHONY: nb
+nb:
+	cd mmbook && \
+		jupyter notebook

@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Torque Meter &#8212; Math Magic Aerodynamics</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Calculating Wire Twist Under Torque" href="wire-twist-calculations.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/lpp.gif" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math Magic Aerodynamics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Digital Torque Meter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wire-twist-calculations.html">
+   Calculating Wire Twist Under Torque
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/digital-torque-meter.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/rblack42/math-magik-aerodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/rblack42/math-magik-aerodynamics/issues/new?title=Issue%20on%20page%20%2Fdigital-torque-meter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indoor-rubber">
+   Indoor Rubber
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#torque-meters">
+   Torque Meters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#microcontrollers-to-the-rescue">
+     Microcontrollers to the Rescue
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#measuring-wind-counts">
+       Measuring wind counts.
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#twist-and-shout">
+   Twist and Shout
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="digital-torque-meter">
+<h1>Digital Torque Meter<a class="headerlink" href="#digital-torque-meter" title="Permalink to this headline">¶</a></h1>
+<p>To get started on my research I decided to get data on what powers my models -
+a simple (well maybe not so simple) rubber band!</p>
+<div class="section" id="indoor-rubber">
+<h2>Indoor Rubber<a class="headerlink" href="#indoor-rubber" title="Permalink to this headline">¶</a></h2>
+<p>The rubber used for this kind of flying generally obtained from FAI Model
+Supply, and is precisely cut to specified widths, then measured carefully to
+some length and cut, then tied into a loop, and lubricated so it will wind and
+unwind easier. This is something of an art.</p>
+<p>That motor is wound up with specialized winders to some number of turns, often
+in the thousands, or to some specified torque value. Winding is simple, and
+adding a counter to the winder makes counting much easier. Measuring torque is
+a bit harder and takes a measuring device known as a torque meter to get the
+data.</p>
+<p>Let’s look closer at the typical torque meter.</p>
+</div>
+<div class="section" id="torque-meters">
+<h2>Torque Meters<a class="headerlink" href="#torque-meters" title="Permalink to this headline">¶</a></h2>
+<p>The common torque meter, is a simple device. There is a short piece of music
+wire, used as a torsion wire, firmly attached at one end of a metal tube or
+attached to a wooden frame. The other end of the wire ends at a hook where the
+rubber motor will be attached.  At that end, a second short piece of wire is
+connected to the torsion wire at a 90 degree angle, and that short piece
+becomes an indicator. As the motor is wound, the torque twists the torsion wire
+causing the pointer to move in an arc. A dial is placed behind the pointer with
+markings to let the user determine the torque at any moment. Here is a simple
+one from J&amp;H Aerospace:</p>
+<img alt="_images/jh-aerospace-meter.png" class="align-center" src="_images/jh-aerospace-meter.png" />
+<p>Crude, but this kind of device has been a staple of indoor modeling for
+decades.</p>
+<p>A few enterprising builders have omitted the dial and placed a digital scale
+under the pointer to create a digital torque meter.  Here is one I found on the
+SciOly.org website which supports the Science Olympiad competitions. (There are
+indoor model airplane events in that competition!)</p>
+<img alt="_images/simple-digital-meter.png" class="align-center" src="_images/simple-digital-meter.png" />
+<p>This is easier to read, and simple to build, but still getting the data is a
+manual process. What I wanted was a torque meter that could deliver its data
+directly to a computer.</p>
+<div class="section" id="microcontrollers-to-the-rescue">
+<h3>Microcontrollers to the Rescue<a class="headerlink" href="#microcontrollers-to-the-rescue" title="Permalink to this headline">¶</a></h3>
+<p>In part of my career I taught a college-level course in computer architecture,
+and introduced students to modern microcontroller systems, popular in the world
+of home automation and robotics. Since I have many such systems available, I
+selected a Raspberry PI as the computer to drive my experiments. Wha I need is
+a way to gather wind count and torque data for a rubber motoras it is wound,
+then gather turn data (and ideally torque data as it unwinds as well. The
+puzzle is how to take my standard flying tools and convince them to deliver the
+data.</p>
+<p>Obviously, I am not going to be able to get data from the model as it flies,
+but some experiementers have constructed test gear to set up a motor and
+propeller on the end of along arm to simulate flying. Perhaps there is
+something there I can use in my test work.</p>
+<div class="section" id="measuring-wind-counts">
+<h4>Measuring wind counts.<a class="headerlink" href="#measuring-wind-counts" title="Permalink to this headline">¶</a></h4>
+<p>A common way to measure turns as a motor is wound is to use a mechanical or
+magnetic device attached to the winder that delivers a count on some form of
+digital meter. I should be easy to adapt this idea to something that can feed
+dayta to the microcontroller. We will look at that in a following section.</p>
+<p>The torque meter is a different problem entirely. The wire twists under torque,
+and reading the twist is not an easy thing to do automatically, If I elect to
+use the digital scale as my measuring device, I still need to dig into that
+meter and find a way to connect it to the microcontroller.</p>
+<p>Some builders have managed to pull the actual measuring device in the scale, a strain
+gauge or “load cell” out, and get that connected to a microcontroller, but we
+are still left with mechanically setting up a twisting wire so it pushes on the
+load cell. That sounds like a lot of work!  What I need is some simple way to automate
+the reading of the torque value from my meter.</p>
+<p>In looking over my stash of microcontrollers, I found a Raspberry Pi camera
+board that easily connects to the Pi. Perhaps I can convince the Pi to process
+a camera view of the dial on a torque meter and give me a reading. Image
+processing is getting pretty good these days, so it is worth a simple test to
+see how this works.</p>
+</div>
+</div>
+</div>
+<div class="section" id="twist-and-shout">
+<h2>Twist and Shout<a class="headerlink" href="#twist-and-shout" title="Permalink to this headline">¶</a></h2>
+<p>Bad pun for an old rocker!</p>
+<p>Before we go further, lets look at the science of the twisting wire and see
+what we are really doing.</p>
+<p>The formula for the twist angle of a piece of music wire subjected to a torque
+can be found from this formula:</p>
+<div class="math notranslate nohighlight">
+\[\alpha = 536.5 \frac{Q l}{d^4 G}\]</div>
+<p>Where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Q</strong> is the applied torque (inch lbs)</p></li>
+<li><p><strong>l</strong> is the length of the wire (inches)</p></li>
+<li><p><strong>d</strong> is the diameter of the wire  (inches)</p></li>
+<li><p><strong>G</strong> is the modulus of elasticity for the wire (lb/in^2)</p></li>
+</ul>
+</div></blockquote>
+<p>Here are some typical values for <strong>G</strong>:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>diameter</p></th>
+<th class="head"><p>G</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0-0.032</p></td>
+<td><p>12000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.033-0.063</p></td>
+<td><p>11850000</p></td>
+</tr>
+<tr class="row-even"><td><p>0.064-0.125</p></td>
+<td><p>11750000</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.126-0.250</p></td>
+<td><p>11600000</p></td>
+</tr>
+</tbody>
+</table>
+<p>To demonstrate using this math to figure out the twist angles to expect from my meter, let’s generate some code.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="wire-twist-calculations.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Calculating Wire Twist Under Torque</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Roie R. Black<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -4,5 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
+- file: digital-torque-meter
+- file: wire-twist-calculations
+- file: optical-torque-meter

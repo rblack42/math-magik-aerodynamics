@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Math Magic Aerodynamics</title>
+    <title>Optical Torque Meter &#8212; Math Magic Aerodynamics</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Digital Torque Meter" href="digital-torque-meter.html" />
+    <link rel="prev" title="Calculating Wire Twist Under Torque" href="wire-twist-calculations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -86,13 +86,13 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Introduction
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="digital-torque-meter.html">
    Digital Torque Meter
@@ -103,8 +103,8 @@
    Calculating Wire Twist Under Torque
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="optical-torque-meter.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Optical Torque Meter
   </a>
  </li>
@@ -149,7 +149,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.rst"><button type="button"
+        <a class="dropdown-buttons" href="_sources/optical-torque-meter.rst"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -169,7 +169,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/rblack42/math-magik-aerodynamics/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/rblack42/math-magik-aerodynamics/issues/new?title=Issue%20on%20page%20%2Foptical-torque-meter.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -190,6 +190,66 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#raw-materials">
+   Raw Materials
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mirrors">
+     Mirrors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#led">
+     LED
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wire">
+     Wire
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-experiment">
+   First Experiment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjusting-the-mirror">
+   Adjusting the mirror
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calibration">
+   Calibration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frame-rate">
+   Frame Rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#meter-housing">
+   Meter Housing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-display">
+   Graphical Display
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -198,66 +258,94 @@
         
               <div>
                 
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>After retiring from my career as an aeronautical engineer and computer
-scientist, I returned to a hobby I started back in high school: building and
-flying indoor model airplanes. These models fly in closed rooms, some as small
-as a gymnasium, and some as large as blimp hangers. They are powered by rubber
-strips tied into a loop and wound up with many turns to produce power for a
-propeller. That propeller pulls an extremely light airframe typically covered
-with a very thin Mylar sheet to produce an airplane weighing less than a U.S.
-Penny! Flight times have reached as high as an hour so far, although my efforts
-have been much poorer. I once hit 15 minutes in my youth at the Lakehurst Blimp
-Hanger, under some expert guidance.</p>
-<p>Part of my motivation for getting into this kind of model building was the
-simple fact that the models were extremely cheap - important to the teen-age
-me. The other motivation was that I was on a quest to figure out how these
-airplanes managed to fly. That quest started when I first saw a free-flight
-model airplane at the age of nine! What I did not really know then was that I
-had started on the path to becoming an aeronautical engineer. However, my
-career path took an unexpected turn when I found myself out of graduate school
-and working as a research scientist at the USAF Aerospace Research Laboratory
-at Wright-Patterson AFB in Dayton, Ohio. There, my work got me started in
-writing code for first-generation supercomputers, and I began a second career
-as a computer scientist. Eventually, I went back to graduate school and got a
-second Master’s degree in CS!</p>
-<p>After 20 years in the USAF, and another 17 teaching computer science at Austin
-Community College, I found myself retired with the time it takes to build
-models again, and do some serious research into how they fly. That was the
-inspiration for the <em>Math Magic</em> project, and this book is the documentation
-for the research part of that project.</p>
-<p>What follows is a chronicle of my work. Part of that work involves building
-some test equipment to get my own data on how my models work, and part will be
-a more theoretical exploration of that flight domain using some computational
-fluid dynamics software. Hopefully, all of this will prove useful to other
-buiders who share my fascination with indoor free-flight models.</p>
-<p>The rubber motor on these models is the only source of energy. When fully wound
-up, it produces a torque force that drives the propeller, and it also exerts a
-strain on the airframe, since the motor will be in tension. One end is
-connected to a hook on the propeller shaft, and the other to a hook at the rear
-of a “motor stick” that is part of the body of the model. If the tension is too
-great, the model can collapse. If the torque is too high, the model might
-climb up to the ceiling and bang into that causing many flight problems.</p>
-<p>Obviously, builders need to learn how to match the motor to the model and the
-flying site to succeed at this kind of activity. Serious builders use sensitive
-torque meters to measure the power that will go to the propeller, and rubber
-stripping equipment to cut thin rubber strips to suit their needs. Learning how
-to build light-weight models strong enough to handle all of this is key to this
-kind of model building.</p>
-<p>The engineer in me wants
-to do some experiments, then create some computer software to help assess a design
-before it even gets built. Long ago, I conducted research in the then emerging
-field of <em>Computational Fluid Dynamics</em> which used powerful supercomputers to
-simulate the flow of air over complete aircraft, usually those flying at very
-high speeds. That kind of work is not commonly done for vehicles like my indoor
-models, but we can still do some research that might help.</p>
-<p>For my first attempt at making some kind of contribution to the model building
-world, I decided to do some research into rubber motors and propellers. What I
-wanted was a way to gather data in a fully
-automated way, rather than rely on manual measurements from torque meters. The
-problem was figuring out what kind of equipment I could use for this work.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="optical-torque-meter">
+<h1>Optical Torque Meter<a class="headerlink" href="#optical-torque-meter" title="Permalink to this headline">¶</a></h1>
+<p>I have a flashlight with a laser pointer, useful for torturing cats! (Don’t
+ask!)</p>
+<p>What I thought about was gluing a small mirror on the torsion wire and shining
+a light, maybe not a laser, at that mirror as it twists. The light beam would
+move across a flat surface of some kind and we could look at that instead of a
+rotating dial/ Again, image processing could be used to read the “meter. Not
+only would this be easy to construct, but it would be very inexpensive,
+especially if we just use an LED for the light source. The big question is
+will this be accurate enough?</p>
+<p>The only way to tell is to build something and try it out!.</p>
+<div class="section" id="raw-materials">
+<h2>Raw Materials<a class="headerlink" href="#raw-materials" title="Permalink to this headline">¶</a></h2>
+<p>Building this torque meter is going to be very simple. All I need is a chunk of
+wire like that used on most common torque meters, a small chunk of mirror and
+an LED.</p>
+<div class="section" id="mirrors">
+<h3>Mirrors<a class="headerlink" href="#mirrors" title="Permalink to this headline">¶</a></h3>
+<p>Of course, it is bad luck to break a mirror, so my first task is to find a
+small piece of mirror. Fortunately, there are people in this world who build
+things like disco globes, and they have tons of suitable mirrors. A quick
+search in my local Hobby Lobby turned up a sheet of mirror tiles measuring
+3/16” square for a few dollars per sheet.</p>
+<p>One problem solved.</p>
+</div>
+<div class="section" id="led">
+<h3>LED<a class="headerlink" href="#led" title="Permalink to this headline">¶</a></h3>
+<p>I have tons of these, since I used then for student lab projects. You need a
+simple 330 ohm resistor to hook one of these up to a microcontroller.</p>
+</div>
+<div class="section" id="wire">
+<h3>Wire<a class="headerlink" href="#wire" title="Permalink to this headline">¶</a></h3>
+<p>My local hobby shop turned up this, along with a couple of DuBro wheel collars
+used to keep wheels from sliding off of wire landing gear. I will glue the
+mirror to tone of these to allow it to be moved along the torsion wire.</p>
+<p>Here is a sketch of the idea:</p>
+</div>
+</div>
+<div class="section" id="first-experiment">
+<h2>First Experiment<a class="headerlink" href="#first-experiment" title="Permalink to this headline">¶</a></h2>
+<p>For my first experiment, I set up my Raspberry Pi and its camera to make sure
+all was running.</p>
+<p>Next, I located an image processing library for the Pi,</p>
+</div>
+<div class="section" id="adjusting-the-mirror">
+<h2>Adjusting the mirror<a class="headerlink" href="#adjusting-the-mirror" title="Permalink to this headline">¶</a></h2>
+<p>Obviously, I cannot let the mirror spin around in a complete circle if I plan on
+imaging the light reflected off of the mirror. That means I need a shorter wire
+to limit the twist angle to something suitable for visual spotting. We will
+rely on the high pixel count on the camera to get a good number to use for
+torque calculations. The wheel collar will allow for minor adjustments of the
+mirror position if needed.</p>
+<p>The software presented earlier will provide a way to set up the required wire
+length.</p>
+</div>
+<div class="section" id="calibration">
+<h2>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h2>
+<p>Once all of this is set up, we need to calibrate the meter so we can get
+reasonable data from it. We could just rely on calculations as a start, but wire
+manufacturing procedures and differences in the materials will result in
+errors. A better way is to use a known weight and connect that to the wire to
+produce a torque we can measure. That means we need to attach a calibration arm
+to the wire, just like the pointer used in traditional torque meters. We could
+just clamp this on using another wheel collar and avoid permanently attaching
+the arm. We will play with that to see if we can get good data.</p>
+</div>
+<div class="section" id="frame-rate">
+<h2>Frame Rate<a class="headerlink" href="#frame-rate" title="Permalink to this headline">¶</a></h2>
+<p>Once we have the software set up, we need to verify that we can spot the light
+on ghe viewing stage (just a piece of white paper will do). Once we can do
+that, we need to see how fast the light can move ans if we can measure its
+position with some accuracy. This does not need to be super fast, since we will
+not be winding or unwinding the motors very fast.</p>
+</div>
+<div class="section" id="meter-housing">
+<h2>Meter Housing<a class="headerlink" href="#meter-housing" title="Permalink to this headline">¶</a></h2>
+<p>If this works well enough for use, my plan is to design a 3D printable housing
+for the camera and the everything except the Pi to create a simple torque meter
+that can be used in the field (with some kind of display. I Pi Zero board an
+battery supply would make this a complete standalone device, and we could use
+Wifi to send data to a laptop if needed.</p>
+<p>If we make this entire thing small enough, we could mount it on a swing arm for
+semi real flight testing og a moving propeller.</p>
+</div>
+<div class="section" id="graphical-display">
+<h2>Graphical Display<a class="headerlink" href="#graphical-display" title="Permalink to this headline">¶</a></h2>
+<p>If we want to go further, it would be simple to add a small screen and display the torque curves as they are recorded. That could show the hysterisus between winding and unwinding.</p>
 </div>
 </div>
 
@@ -290,15 +378,15 @@ problem was figuring out what kind of equipment I could use for this work.</p>
 
 <div class='prev-next-bottom'>
     
-     <div id="next">
-        <a class="right-next" href="digital-torque-meter.html" title="next page">
+    <div id="prev">
+        <a class="left-prev" href="wire-twist-calculations.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Digital Torque Meter</p>
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Calculating Wire Twist Under Torque</p>
             </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
         </a>
-     </div>
+    </div>
 
 </div>
         
