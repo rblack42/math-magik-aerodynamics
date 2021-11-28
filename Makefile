@@ -1,3 +1,5 @@
+all:	docs
+
 .PHONY: venv
 venv:
 	echo 'layout python3' > .envrc && \
@@ -8,8 +10,8 @@ reqs:
 	pip install -U pip
 	pip install -r requirements.txt
 
-.PHONY: build
-build:
+.PHONY: docs
+docs:
 	jupyter-book build mmbook/
 	cp -R mmbook/_build/html/ docs
 

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Torque Meter &#8212; Math Magic Aerodynamics</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,7 +42,7 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
@@ -56,7 +56,10 @@
     <link rel="next" title="Calculating Wire Twist Under Torque" href="wire-twist-calculations.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -104,6 +107,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="wire-twist-calculations.html">
    Calculating Wire Twist Under Torque
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optical-torque-meter.html">
+   Optical Torque Meter
   </a>
  </li>
 </ul>
@@ -197,6 +205,20 @@
   <a class="reference internal nav-link" href="#indoor-rubber">
    Indoor Rubber
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winding">
+     Winding
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#off-model-winding">
+       Off Model Winding
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#torque-meters">
@@ -236,19 +258,59 @@
   <div class="section" id="digital-torque-meter">
 <h1>Digital Torque Meter<a class="headerlink" href="#digital-torque-meter" title="Permalink to this headline">¶</a></h1>
 <p>To get started on my research I decided to get data on what powers my models -
-a simple (well maybe not so simple) rubber band!</p>
+a simple (well maybe not so simple) rubber band! Many indoor flyers have
+generated data on their motors in the past, but the process they used was very
+tedious. Any readings they made were taken visually while winding and that
+winding had to be paused to take a reading. My goal is to automate this process
+as much as possible, using computer technologies to gather the data.</p>
+<p>Fortunately, in the last part of my professional career, I gathered a lot of
+gadgets used in building robots, which I made available to my students. My
+automation ideas will help me make use of that now idle stuff!</p>
 <div class="section" id="indoor-rubber">
 <h2>Indoor Rubber<a class="headerlink" href="#indoor-rubber" title="Permalink to this headline">¶</a></h2>
-<p>The rubber used for this kind of flying generally obtained from FAI Model
-Supply, and is precisely cut to specified widths, then measured carefully to
-some length and cut, then tied into a loop, and lubricated so it will wind and
-unwind easier. This is something of an art.</p>
-<p>That motor is wound up with specialized winders to some number of turns, often
-in the thousands, or to some specified torque value. Winding is simple, and
-adding a counter to the winder makes counting much easier. Measuring torque is
-a bit harder and takes a measuring device known as a torque meter to get the
-data.</p>
-<p>Let’s look closer at the typical torque meter.</p>
+<p>The rubber used for this kind of flying generally obtained from <a class="reference external" href="https://www.faimodelsupply.com/">FAI Model
+Supply</a> and is sold by the pound, precisely cut to specified widths. Many
+builders strip the rubber to custom widths from there. A length of the final
+rubber strip is then cut and tied to form a loop, typically from 1.5 to 2 times
+the distance between the hooks. The rubber is then lubricated to make it wind
+and unwind smoother.</p>
+<p>Each motor operates in a different manner after winding and unwinding sessions.
+As the motor ages, it must eventually be replaced to keep the model flying well. Model
+builders keep records on each flight to help determine when a motor has lost
+its ability to deliver the needed power.</p>
+<p>Managing motor production and operation is clearly something of an art form!</p>
+<div class="section" id="winding">
+<h3>Winding<a class="headerlink" href="#winding" title="Permalink to this headline">¶</a></h3>
+<p>One of the prized possessions of any indoor flyer is the winder used before
+each flight. Like many indoor flyers, I own a Wilder 20:1 winder that is no longer in
+production and expensive to acquire.</p>
+<p>Basically, to wind a motor for a flight, it is disconnected from the model and
+attached to a stationary hook or a torque meter, and the winder. It is then
+stretched out and wound to a desired turn count, or a specified torque reading.
+Once wound, the motor is carefully connected to the two hooks: one on the
+propeller shaft and the other on a rear hook attached to the motor stick. This
+is a dangerous action, since a misstep can result in a broken model if the
+rubber tension is too high!</p>
+<p>The basic winding data can be collected during he winding process, so let’s
+look at that phase of testing first.</p>
+<div class="section" id="off-model-winding">
+<h4>Off Model Winding<a class="headerlink" href="#off-model-winding" title="Permalink to this headline">¶</a></h4>
+<p>The data we need to collect here is the turn count and current torque available
+in the motor as it is wound. That means we need to collect data on torque,
+probably at the rear of the motor, and turn counts at the winding end.</p>
+<p>Counting wind turns is a simple matter as many winders have counters attached
+to hep with this action. However, most common counters need to be read
+manually, making data collection difficult. It will be simple enough to
+generate a signal we can feed to a computer to automate this action.</p>
+<p>Another, better option is to build an automatic winder driven by a computer. Since the
+torque generated in indoor models is fairly low, a stepper motor should be able
+to do the winding. Stretching the motor is another job that could be automated
+using stepper motors or linear actuators, both common in the world of robotics
+these days. We will examining this problem in the next section.</p>
+<p>Measuring the torque available in the wound motor is a more difficult problem.
+Let’s look closer at the typical torque meter.</p>
+</div>
+</div>
 </div>
 <div class="section" id="torque-meters">
 <h2>Torque Meters<a class="headerlink" href="#torque-meters" title="Permalink to this headline">¶</a></h2>
@@ -263,13 +325,20 @@ markings to let the user determine the torque at any moment. Here is a simple
 one from J&amp;H Aerospace:</p>
 <img alt="_images/jh-aerospace-meter.png" class="align-center" src="_images/jh-aerospace-meter.png" />
 <p>Crude, but this kind of device has been a staple of indoor modeling for
-decades.</p>
+decades. The numbers printed on the dial are often do not correlate to any real
+torque value. Calibration can provide a way to generate real numbers, but many
+flyers just wind to some number and then fly. Over time they learn what number
+seems to work best for a given model.</p>
+<p>If you do not calibrate the torque meter, then your data is not of much use to
+another modeler who ses a different instrument. For that reason, I want my data
+collection to use “real” values.</p>
 <p>A few enterprising builders have omitted the dial and placed a digital scale
 under the pointer to create a digital torque meter.  Here is one I found on the
-SciOly.org website which supports the Science Olympiad competitions. (There are
+<a class="reference external" href="https://scioly.org/">SciOly.org</a> website which supports the Science Olympiad competitions. (There are
 indoor model airplane events in that competition!)</p>
 <img alt="_images/simple-digital-meter.png" class="align-center" src="_images/simple-digital-meter.png" />
-<p>This is easier to read, and simple to build, but still getting the data is a
+<p>Again, the values measured using this setup are not real, but depend on the length of the arm that is sitting on the scale. Post processing the data will prooduce actual torque values.</p>
+<p>This digital setup is easier to read, and simple to build, but still getting the data is a
 manual process. What I wanted was a torque meter that could deliver its data
 directly to a computer.</p>
 <div class="section" id="microcontrollers-to-the-rescue">
@@ -380,31 +449,22 @@ can be found from this formula:</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="intro.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Introduction</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="wire-twist-calculations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculating Wire Twist Under Torque</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="wire-twist-calculations.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Calculating Wire Twist Under Torque</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -425,8 +485,7 @@ can be found from this formula:</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

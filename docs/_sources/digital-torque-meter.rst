@@ -2,22 +2,75 @@ Digital Torque Meter
 ####################
 
 To get started on my research I decided to get data on what powers my models -
-a simple (well maybe not so simple) rubber band!
+a simple (well maybe not so simple) rubber band! Many indoor flyers have
+generated data on their motors in the past, but the process they used was very
+tedious. Any readings they made were taken visually while winding and that
+winding had to be paused to take a reading. My goal is to automate this process
+as much as possible, using computer technologies to gather the data.
+
+Fortunately, in the last part of my professional career, I gathered a lot of
+gadgets used in building robots, which I made available to my students. My
+automation ideas will help me make use of that now idle stuff!
+
 
 Indoor Rubber
 *************
 
-The rubber used for this kind of flying generally obtained from FAI Model
-Supply, and is precisely cut to specified widths, then measured carefully to
-some length and cut, then tied into a loop, and lubricated so it will wind and
-unwind easier. This is something of an art.
+The rubber used for this kind of flying generally obtained from `FAI Model
+Supply`_ and is sold by the pound, precisely cut to specified widths. Many
+builders strip the rubber to custom widths from there. A length of the final
+rubber strip is then cut and tied to form a loop, typically from 1.5 to 2 times
+the distance between the hooks. The rubber is then lubricated to make it wind
+and unwind smoother.
 
-That motor is wound up with specialized winders to some number of turns, often
-in the thousands, or to some specified torque value. Winding is simple, and
-adding a counter to the winder makes counting much easier. Measuring torque is
-a bit harder and takes a measuring device known as a torque meter to get the
-data.
+Each motor operates in a different manner after winding and unwinding sessions.
+As the motor ages, it must eventually be replaced to keep the model flying well. Model
+builders keep records on each flight to help determine when a motor has lost
+its ability to deliver the needed power.
 
+Managing motor production and operation is clearly something of an art form!
+
+Winding
+=======
+
+One of the prized possessions of any indoor flyer is the winder used before
+each flight. Like many indoor flyers, I own a Wilder 20:1 winder that is no longer in
+production and expensive to acquire.
+
+..  inage:: wilder-winder.png
+    :align: center
+    :width: 500
+
+Basically, to wind a motor for a flight, it is disconnected from the model and
+attached to a stationary hook or a torque meter, and the winder. It is then
+stretched out and wound to a desired turn count, or a specified torque reading.
+Once wound, the motor is carefully connected to the two hooks: one on the
+propeller shaft and the other on a rear hook attached to the motor stick. This
+is a dangerous action, since a misstep can result in a broken model if the
+rubber tension is too high!
+
+The basic winding data can be collected during he winding process, so let's
+look at that phase of testing first.
+
+Off Model Winding
+-----------------
+
+The data we need to collect here is the turn count and current torque available
+in the motor as it is wound. That means we need to collect data on torque,
+probably at the rear of the motor, and turn counts at the winding end.
+
+Counting wind turns is a simple matter as many winders have counters attached
+to hep with this action. However, most common counters need to be read
+manually, making data collection difficult. It will be simple enough to
+generate a signal we can feed to a computer to automate this action.
+
+Another, better option is to build an automatic winder driven by a computer. Since the
+torque generated in indoor models is fairly low, a stepper motor should be able
+to do the winding. Stretching the motor is another job that could be automated
+using stepper motors or linear actuators, both common in the world of robotics
+these days. We will examining this problem in the next section.
+
+Measuring the torque available in the wound motor is a more difficult problem.
 Let's look closer at the typical torque meter.
 
 Torque Meters
@@ -37,18 +90,27 @@ one from J&H Aerospace:
 	:align: center
 
 Crude, but this kind of device has been a staple of indoor modeling for
-decades.
+decades. The numbers printed on the dial are often do not correlate to any real
+torque value. Calibration can provide a way to generate real numbers, but many
+flyers just wind to some number and then fly. Over time they learn what number
+seems to work best for a given model.
+
+If you do not calibrate the torque meter, then your data is not of much use to
+another modeler who ses a different instrument. For that reason, I want my data
+collection to use "real" values.
 
 A few enterprising builders have omitted the dial and placed a digital scale
 under the pointer to create a digital torque meter.  Here is one I found on the
-SciOly.org website which supports the Science Olympiad competitions. (There are
+`SciOly.org`_ website which supports the Science Olympiad competitions. (There are
 indoor model airplane events in that competition!)
 
 
 ..  image:: simple-digital-meter.png
     :align: center
 
-This is easier to read, and simple to build, but still getting the data is a
+Again, the values measured using this setup are not real, but depend on the length of the arm that is sitting on the scale. Post processing the data will prooduce actual torque values.
+
+This digital setup is easier to read, and simple to build, but still getting the data is a
 manual process. What I wanted was a torque meter that could deliver its data
 directly to a computer.
 
@@ -127,3 +189,7 @@ Here are some typical values for **G**:
 	0.126-0.250, 11600000
 
 To demonstrate using this math to figure out the twist angles to expect from my meter, let's generate some code.
+
+..  _`FAI Model Supply`:    https://www.faimodelsupply.com/
+
+..  _`SciOly.org`:          https://scioly.org/

@@ -47,6 +47,26 @@ mirror to tone of these to allow it to be moved along the torsion wire.
 
 Here is a sketch of the idea:
 
+..  tikz::
+    :libs: arrows, shapes.geometric
+
+    \draw[thick] (4,0) -- (4,6);
+    \draw[->] (8,3) -- node[above](a){torsion wire} (4,3);
+    \draw[->] (8,4.5) -- node[above] (b) {mirror} (4,4.5);
+    \draw (4,6) arc (270:0:0.25);
+    \draw[ultra thick] (3.5,0) -- (4.5,0);
+
+    \filldraw[blue] ([xshift=-5pt, yshift=-5pt]4,4.5) rectangle ++(5pt, 10pt);
+
+    \node[isosceles triangle, draw, rotate=180, fill=black] (T1) at (0,5){};
+    \filldraw[red] (0,4) circle (5pt);
+    \filldraw[blue] ([xshift=-30pt, yshift=-8pt]0,4) rectangle ++(30pt,16pt);
+    \filldraw[blue] ([xshift=-30pt, yshift=-8pt]0,5) rectangle ++(30pt,16pt);
+    \draw[red] (0,5) -- (4,4.5);
+    \draw[red] (0,4) -- (4,4.5);
+    \node at (-0.5, 3.5) (l1) {led};
+    \node at (-0.5, 5.5) (l2) {camera};
+
 First Experiment
 ****************
 

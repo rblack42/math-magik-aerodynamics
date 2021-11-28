@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indoor Aerodynamics &#8212; Math Magic Aerodynamics</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Digital Torque Meter" href="../digital-torque-meter.html" />
+    <link rel="prev" title="Introduction" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/lpp.gif" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math Magic Aerodynamics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Indoor Aerodynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-torque-meter.html">
+   Digital Torque Meter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wire-twist-calculations.html">
+   Calculating Wire Twist Under Torque
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../optical-torque-meter.html">
+   Optical Torque Meter
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/indoor-math/indoor-aerodynamics.rst"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/rblack42/math-magik-aerodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/rblack42/math-magik-aerodynamics/issues/new?title=Issue%20on%20page%20%2Findoor-math/indoor-aerodynamics.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motion">
+   Motion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-s-first-law">
+     Newton’s First Law
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectors">
+     Vectors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unit-vectors">
+     Unit Vectors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gravity">
+   Gravity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time">
+   Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="indoor-aerodynamics">
+<h1>Indoor Aerodynamics<a class="headerlink" href="#indoor-aerodynamics" title="Permalink to this headline">¶</a></h1>
+<p>Aerodynamics is the study of the motion of the stuff we all live in, but never
+think much about: Air!  I had never heard about aerodynamics until I
+watched a rubber-powered free flight model fly and decided I needed to figure
+out how that flight happened. I was nine years old at the time.</p>
+<p>Back then, I had a vague idea that I needed to learn there something about air
+to figure out this flying stuff. For instance, when riding in a car, I noticed
+that when I stuck my hand out the window I could feel a force pushing on that
+hand. If I held my hand flat and parallel to the ground, the force seemed to go
+away. If I held it vertically, my hand wanted to fly to the back of the car! If
+I held it at an angle it wanted to fly upward! What was that all about anyway?
+I needed answers!</p>
+<p>Living in the Washington, D.C. area, I had been taken to the Smithsonian
+Institution museums many times. Looking at all the exhibits there honed my
+curiosity.  Eventually, I found myself wanting to understand what made all
+kinds of things work. From that point on, I never looked at anything without
+asking myself what was going inside that thing. With flying, there was a lot to
+figure out. Just sitting there staring at the Wright Flyer motivated me to dig
+deeper into this flying stuff, and that curiosity has followed me to this very
+day!</p>
+<p>In this note, we will explore air and motion, hopefully in an interesting way.
+We will use math to help us understand how air works to let things fly! My goal
+here is to explain things to that kid I used to be. Ok, maybe not that exact
+kid, since that kid did not know much about math. However, the math we will use
+will be explained in a way that maybe a somewhat older kid will understand,
+especially one who has learned a bit of geometry and trigonometry.  Do not
+get frightened away by the thought that we will be using math here. It should
+not be too painful!</p>
+<p>I am also going to use some computer programming to help visualize the math. We
+will use Python, which is actually used to teach kids as young as I was back
+then how to use computers to do fun stuff. I am assuming that you have access
+to a computer and can install some simple tools to follow along with this
+discussion!</p>
+<div class="section" id="motion">
+<h2>Motion<a class="headerlink" href="#motion" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start off by taking a simple model airplane and tossing it into the air!</p>
+<a class="reference internal image-reference" href="../_images/first-launch.jpg"><img alt="../_images/first-launch.jpg" class="align-center" src="../_images/first-launch.jpg" style="width: 600px;" /></a>
+<p>I did exactly that a bunch of times as a kid, since these things were very
+cheap and easy to find in stores. Unfortunately, they did not fly all that
+well.</p>
+<p>That arrow shows where the model is going, and the label <strong>V</strong> indicates how
+fast (velocity) we threw it! I wonder where it will go! Well there is a hint in
+that arrow!</p>
+<p>Suppose we create a mathematical <em>function</em> that tells us how high the model
+will go over some amount of time. The kid asks: “What is a function?” Well, I
+suspect you have a calculator around somewhere. If not, fire up one on your
+computer:</p>
+<a class="reference internal image-reference" href="../_images/calculator.png"><img alt="../_images/calculator.png" class="align-center" src="../_images/calculator.png" style="width: 400px;" /></a>
+<p>This is the scientific calculator on my Macbook.</p>
+<p>See that button with the <strong>cos</strong> on it? You enter some number then push that
+button. Another number appears on the screen. Behind that button is a
+mathematical <em>function</em> that performs some magic and delivers the result to the
+screen. The function may do a lot of work, but we are not concerned with that,
+we just want the answer</p>
+<p>Let’s invent a <em>function</em> of our own that will deliver the height the model
+will attain after some amount of time:</p>
+<div class="math notranslate nohighlight">
+\[h = height(t)\]</div>
+<p>Here:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>h</strong> is the height</p></li>
+<li><p><strong>t</strong> it some amount of time since launch</p></li>
+<li><p><strong>height</strong> is what we will put on our calculator button.</p></li>
+</ul>
+</div></blockquote>
+<p>If we had this <em>function</em> in our calculator we could figure out how high
+our model would be by entering some amount of time then hitting the <strong>height</strong>
+key. The height would be displayed on our screen.</p>
+<p>The magic is in the <strong>height</strong> function!</p>
+<p>On the calculator, the magic behind each button is invisible. My curious self
+does not like that – I need to know what is going on. (Hint: it turns out it
+is just more math with some computer parts helping out!) Since we do not have a
+calculator with this <strong>height</strong> on some button, we need to figure out the math
+ourselves. The calculator can still help.</p>
+<div class="section" id="newton-s-first-law">
+<h3>Newton’s First Law<a class="headerlink" href="#newton-s-first-law" title="Permalink to this headline">¶</a></h3>
+<p>Way back in 1687, Isaac Newton spent a lot of time thinking about how things
+move. Eventually, he published his thoughts in <em>Principia</em>, a book that is
+considered the foundation of modern physics. In this book Newton laid out some
+fundamental <em>laws</em> that explain how things move. His first law will help us
+figure out where our model will go:</p>
+<blockquote>
+<div><p>An object at rest remains at rest, and an object in motion remains in
+motion at the same speed and in the same direction, unless acted upon by an
+unbalanced force.</p>
+</div></blockquote>
+<p>At the moment we do not seem to have any forces (unbalanced or otherwise)
+acting on our model.  We tossed it and it flew away on its own. According to
+Newton, it will fly away along a path indicated by that arrow in the figure.</p>
+<p>That law tells us the model fill fly “in the same direction, and at the
+same speed” forever. That is not good. I spent my hard earned money (I
+delivered papers back them) buying this silly model and one launch is going to
+send it to outer space?</p>
+<p>Well, we just know that will not happen. Surely it will fall back to the
+ground some distance away. But why?</p>
+<p>There actually is a force acting on that model after our toss. The force is
+another of those important, but often ignored, things we live with all the time:
+<em>gravity</em>!</p>
+<p>Before we dive into <em>gravity</em>, let’s stop for a moment, and think about that
+arrow in the figure above. Formally, that thing is called a <em>vector</em>, and vectors are
+going to be very useful gadgets in our work!</p>
+</div>
+<div class="section" id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h3>
+<p>That arrow shows where we expect our model to go. If you think about it, the
+model’s motion actually has two parts: the model will fly upward and it will
+fly directly away from us. As time move along, the model will get higher and
+higher, and get further and further away. It looks like we need a second
+function to explain all of the motion:</p>
+<div class="math notranslate nohighlight">
+\[d = distance(t)\]</div>
+<p>Here <strong>d</strong> is the distance away from the launch point and <strong>t</strong> is the time
+since launch. I named this function <strong>distance</strong> to distinguish it from
+<strong>height</strong> defined earlier.</p>
+<p>A <em>vector</em> is something that has both a <em>magnitude</em> and a <em>direction</em>. Our
+velocity vector arrow shows the <em>direction</em>, and we can show the <em>magnitude</em> (speed in
+this case) by drawing the arrow some length that represents that speed. With
+this in mind, the two parts of our model’s motion look like this:</p>
+<div class="figure" style="text-align: center"><p><img  src="../_images/tikz-8d0e12483d60651c659341985b8496768d0f9f3a.png" alt="Figure made with TikZ" /></p>
+</div><p>Here we introduce two more <em>vectors</em>; one showing the motion upward giving us
+height, and another showing motion away from us showing the distance along the
+ground the model has traveled. It is important to see that these two motions
+are happening at the same time!.</p>
+<p>These three vectors form a right triangle, and if we know the angle of our
+toss, we can calculate the lengths of the two new vectors:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}V_d = V \cos(\alpha)\\V_h = V \sin(\alpha)\end{aligned}\end{align} \]</div>
+<p>Here, <strong>V</strong> is the <em>magnitude</em> of the toss (its speed) and <span class="math notranslate nohighlight">\(\alpha\)</span> is the
+angle we used in our toss. <span class="math notranslate nohighlight">\($V_d\)</span> is the <em>magnitude</em> (speed) along the
+ground, and <span class="math notranslate nohighlight">\(V_h\)</span> is the speed upward as the model gains height.</p>
+</div>
+<div class="section" id="unit-vectors">
+<h3>Unit Vectors<a class="headerlink" href="#unit-vectors" title="Permalink to this headline">¶</a></h3>
+<p>It will be convenient to talk about vectors in terms of directional components
+like distance and height. Normally, we use a simple <strong>X-Y</strong> coordinate system
+in our discussions. If we set things up right, <strong>X</strong> is a measure of distance,
+and <strong>Y</strong> is a measure of height.</p>
+<p>Suppose we have a vector whose <em>magnitude</em> is one, and whose direction is
+parallel to the <strong>X</strong> axis. We will call this vector <span class="math notranslate nohighlight">\(|hat{i}\)</span>. The hat symbol
+is to remind us that this is a special vector with a <em>magnitude</em> of one, and
+the <strong>i</strong> tells us it is aligned parallel to the <strong>X</strong> axis. The direction of
+this <em>unit vector</em> is in the direction of increasing <strong>X</strong>.  A similar unit
+vector aligned parallel to the <strong>Y</strong> axis will be called <span class="math notranslate nohighlight">\(\hat{Y}\)</span>.</p>
+<p>Now our distance vnd height ectors become:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\overrightarrow{V_d} = V_d \hat{i}\\\overrightarrow{V_h} = V_h \hat{j}\end{aligned}\end{align} \]</div>
+<p>With these definitions, we can show how to add two vectors:</p>
+<div class="math notranslate nohighlight">
+\[\overrightarrow{V} = \overrightarrow{V_h} + \overrightarrow{V_d} = V_d \hat{i} + V_h \hat{j}\]</div>
+<p>The <em>magnitude</em> of $|overrightarrow{V}$ is given by this equation:</p>
+<div class="math notranslate nohighlight">
+\[V = \sqrt{{V_d}^2 + {V_h}^2}  vb\]</div>
+<p>Finally, let’s get rid of the height and distance names. We will use a
+subscript of <strong>x</strong> to indicate a direction parallel to the <strong>X</strong> axis, and <strong>y</strong>
+to indicate a direction parallel to the <strong>Y</strong> axis. In both cases, the
+direction is along increasing values of <strong>X</strong> and <strong>Y</strong>.</p>
+<div class="math notranslate nohighlight">
+\[V = \sqrt{{V_x}^2 + {V_y}^2}\]</div>
+<p>Now, let’s look at gravity!</p>
+</div>
+</div>
+<div class="section" id="gravity">
+<h2>Gravity<a class="headerlink" href="#gravity" title="Permalink to this headline">¶</a></h2>
+<p>Kids are often told that Newton figured out <em>gravity</em> after an apple fell on
+his head while he was sitting under a tree. In fact (or so history goes), he
+just watched one fall from a tree and his thoughts about that led to his second
+law:</p>
+<blockquote>
+<div><p>The time rate of change of the <em>momentum</em> of an object is equal in
+magnitude and direction to the force acting on that object.</p>
+</div></blockquote>
+<p>In this case, the force was called <em>gravity</em>. <em>Momentum</em> is actually
+pretty simple:</p>
+<blockquote>
+<div><p>The <em>momentum</em> of an object is its velocity (a vector) multiplied by its
+<em>mass</em> (think weight for now).</p>
+</div></blockquote>
+<p>We call that “time rate of change” of velocity <em>acceleration! You know what
+that is. If the driver of a car stomps on the gas pedal, the car *accelerates</em>!
+It goes faster and faster until the cops pull the car over!</p>
+<p>In math terms, this law looks like this:</p>
+<div class="math notranslate nohighlight">
+\[F = m a\]</div>
+<p>Actually, a force has magnitude and direction, so we need to show that. To make
+this easier to follow, we will add notation that tells us when something is a
+<em>vector</em>: we will place a small arrow above the term:</p>
+<div class="math notranslate nohighlight">
+\[\overrightarrow{F} = m \overrightarrow{a}\]</div>
+<p>So, <strong>V</strong> means the <em>magnitude</em> (speed) of our vector and
+<span class="math notranslate nohighlight">\(\overrightarrow{V}\)</span> means the actual vector, itself. In our equation,
+mass (<strong>m</strong>) is not a vector, it is just a number we call a <em>scalar</em> since
+multiplying a vector by a scaler just gives is a new vector with the magnitude
+scaled by the amount indicated by that number!</p>
+<p>Think about our model launch! We <em>accelerated</em> the model from nothing to some
+speed with the force of our arm, then released the model in some direction,
+removing that force as we let it go!  That acceleration went to zero and it
+looked like Newton’s first law took over!  However, that <em>gravity</em> stuff was
+still at work, pulling the model downward, So our height function is more
+complicated than we thought. <em>Gravity</em> does not affect the distance vector at
+all!.</p>
+<p>Finally, we need to distinguish between <em>mass</em> and <em>weight</em>. When you stand on
+a scale, your <em>mass</em> is pushed down by the force of the Earth’s gravity on that
+scale. The scale measures that force and we call the reading our weight. If we were
+standing on the Moon when we did that, our <em>weight</em> would be much lower, since the
+force of gravity on the Moon is about one sixth of that on earth! (New diet
+plan: move to the Moon!)</p>
+</div>
+<div class="section" id="time">
+<h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<p>We have mentioned <em>time</em> several times in our discussion. We need to think about time a bit.</p>
+<p>Time is measured in something we call <em>seconds</em> or a few related names. <em>Time
+is not a vector, but it does have a *magnitude</em>. We think of time as marching
+from the past to the future, or from now to the future. Lets indicate the start
+time of our flight as time zero and use this symbol:</p>
+<div class="math notranslate nohighlight">
+\[T_0 - value of time at the instance we let go of the model.\]</div>
+<p>Obviously, we never worry about when time started in a real sense, although
+Physicists are always thinking about that. We are more interested in some
+interval of time, so we will arbitrarily say that the value of time at $T_0$ is
+just zero. From that moment on, we will measure our flight time in seconds.</p>
+<p>Can we use time to figure our where our model will be some time later? Of
+course. The speeds involved will show us the way:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}h = V_0 \sin(\alpha) t = V_h t\\d = V_0 \cos(\alpha) t = V_d t\end{aligned}\end{align} \]</div>
+<p>I decided to show the velocity at the instant of launch as <span class="math notranslate nohighlight">\(V_0\)</span>. After
+some time <strong>t</strong> has passed the height and distance can be calculated with our
+trusty calculator!</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Have you had enough math for the moment? Let’s switch gears and show some
+python code and graphics to demonstrate our model’s motion.</p>
+<p>To follow along next, you need to do some setup work, explained in the Appendix
+(<span class="xref std std-ref">jupyter-setup</span>)</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./indoor-math"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../digital-torque-meter.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Digital Torque Meter</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Roie R. Black<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

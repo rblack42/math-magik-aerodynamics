@@ -4,6 +4,8 @@
 format: jb-book
 root: intro
 chapters:
+- file: indoor-math/indoor-aerodynamics
+- file: first-flight
 - file: digital-torque-meter
 - file: wire-twist-calculations
 - file: optical-torque-meter

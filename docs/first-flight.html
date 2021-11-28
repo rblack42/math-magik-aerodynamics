@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First light &#8212; Math Magic Aerodynamics</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Digital Torque Meter" href="digital-torque-meter.html" />
+    <link rel="prev" title="Indoor Aerodynamics" href="indoor-math/indoor-aerodynamics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/lpp.gif" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Math Magic Aerodynamics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="indoor-math/indoor-aerodynamics.html">
+   Indoor Aerodynamics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   First light
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="digital-torque-meter.html">
+   Digital Torque Meter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wire-twist-calculations.html">
+   Calculating Wire Twist Under Torque
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optical-torque-meter.html">
+   Optical Torque Meter
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/first-flight.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/rblack42/math-magik-aerodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/rblack42/math-magik-aerodynamics/issues/new?title=Issue%20on%20page%20%2Ffirst-flight.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/rblack42/math-magik-aerodynamics/master?urlpath=tree/mmbook/first-flight.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   First light
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-height-and-distance">
+   Plotting Height and distance
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-gravity">
+   Adding Gravity
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stepping-with-time">
+   Stepping with time
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flying-with-gravity">
+   flying with gravity
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="first-light">
+<h1>First light<a class="headerlink" href="#first-light" title="Permalink to this headline">¶</a></h1>
+<p>So far, we have explored a bit of math to explain how a model airplane might fly if we toss it into the air. This airplane has not power source, it is a simple glider. We have not figured out anything about real flight yet, our model might just as well be a rock! (Actually some of my early models flew as well as a rock!)</p>
+<p>We have a few equations that explain how our rock - er - model will move over time:</p>
+<div class="math notranslate nohighlight">
+\[
+V_d = V_0 \cos(\alpha)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+V_h = V_0 \sin(\alpha)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+d = V_d t
+\]</div>
+<p>$<span class="math notranslate nohighlight">\(
+h = V_h t
+\)</span>$.</p>
+<p>We can plot the hight and the distance traveled over some time inteval using a bit of python.</p>
+<p>First, we meed a bit of setup:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">imageio</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, lets create a few variables that we will initialize with some test values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_0</span> <span class="o">=</span> <span class="mf">60.</span> <span class="c1"># feet per second</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1"># degrees</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use our first two equations to find out how fast the model will move up and away. unfortunately, we need to convert the angle into what math majors call <em>radians</em>. There are <span class="math notranslate nohighlight">\(\pi\)</span> radians in 180 degrees. Python can do the conversions like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_d</span> <span class="o">=</span> <span class="n">V_0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">)</span>
+<span class="n">V_h</span> <span class="o">=</span> <span class="n">V_0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;V_h = &quot;</span><span class="p">,</span><span class="n">V_h</span><span class="p">,</span> <span class="s2">&quot; V_d = &quot;</span><span class="p">,</span> <span class="n">V_d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>V_h =  29.999999999999996  V_d =  51.96152422706632
+</pre></div>
+</div>
+</div>
+</div>
+<p>That first number, <span class="math notranslate nohighlight">\(V_h\)</span> should really just be 30, but computers are never absolutely precise when working with numbers that have a decimal point like what we see.</p>
+</div>
+<div class="section" id="plotting-height-and-distance">
+<h1>Plotting Height and distance<a class="headerlink" href="#plotting-height-and-distance" title="Permalink to this headline">¶</a></h1>
+<p>The distance and height traveled over some amount of time are given by our second two equations. here is some Python code (messy, I admit) that will plot these values as time moves along. We will build two Python functions to calculate the values of height and distance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+    <span class="n">alpha_radians</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+    <span class="k">return</span> <span class="n">time</span> <span class="o">*</span> <span class="n">v0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">height</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+    <span class="n">alpha_radians</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+    <span class="k">return</span> <span class="n">time</span> <span class="o">*</span> <span class="n">v0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">height</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V_0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">distance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V_0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_8_0.png" src="_images/first-flight_8_0.png" />
+</div>
+</div>
+<p>With this graph, we can see how far and how high our model will be for any value of time from 0 to 10! Can we see its flight path? Sure!</p>
+<p>This time we will simplify our code a bit by pulling out the caslculation of the flight angle in radians, and use something called <em>global variables</em> let our functions use the values for <span class="math notranslate nohighlight">\(V_0\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> without providing them when we use our functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_radians</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span>
+
+<span class="k">def</span> <span class="nf">X_distance</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">V_0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">Y_height</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">V_0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+
+<span class="n">x_t</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_distance</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="k">for</span> <span class="n">xt</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>
+<span class="n">y_t</span> <span class="o">=</span> <span class="p">[</span><span class="n">Y_height</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="k">for</span> <span class="n">xt</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">y_t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_10_0.png" src="_images/first-flight_10_0.png" />
+</div>
+</div>
+<p>Well! Looks like Newton was right - it is traveling in a straight line. At least until we add in that gravity force later in this lecture!</p>
+<p>Let’s see if we can animate this (boring) flight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="c1"># plot the line chart</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_t</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">y_t</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+    
+    <span class="c1"># create file name and append it to a list</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span>
+    <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="c1"># save frame</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># build gif</span>
+<span class="k">with</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="s1">&#39;first-flight.gif&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;I&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        
+<span class="c1"># Remove files</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="First Flight" src="files/first-flight.gif" /></p>
+<p>Ok, not very exciting, but there it goes, heading off to outer space! At least we are making progress. Now on to gravity!</p>
+</div>
+<div class="section" id="adding-gravity">
+<h1>Adding Gravity<a class="headerlink" href="#adding-gravity" title="Permalink to this headline">¶</a></h1>
+<p>Newton’s second law mentioned the “time rate of change of velocity”. That means our vertical velocity <span class="math notranslate nohighlight">\(V_h\)</span> is not a constant, but varies with time based on the force being applied, gravity in this instance.</p>
+<p>The value of the Earth’s gravity is 32.2 teet per seond per second. That means our velocity in the downward direction increases 32.2 feet per second for every second we move. Since our initial velocity was in an upward direction, gravity will slow that velocity, eventually causing it to stop going up and start going down! Let’s see how we can display that.</p>
+<p>In our previous animation we had a constant velocity <span class="math notranslate nohighlight">\(V_h\)</span> and used that to get our height. In this next example, we need to alter the value of <span class="math notranslate nohighlight">\(V_h\)</span> as time marches along, using our value for gravity to make the changes. Our set of time values, <strong>t</strong> in the code above, will still represent time, but we need to add in the acceleration to come up with the velocity at each moment.</p>
+<p>The change in velocity will be given by the acceleration times the amount of time we traveled. Since gravity moves the object downward, we will subtract this change from our initial velocity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gravity</span> <span class="o">=</span> <span class="mf">32.2</span>
+<span class="n">V_0</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="k">def</span> <span class="nf">velocity</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">gravity</span> <span class="o">*</span> <span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">X_distance_gravity</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">V_0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">Y_height_gravity</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">V_0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gravity</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span>
+
+<span class="n">x_gt</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_distance_gravity</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="k">for</span> <span class="n">xt</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>
+<span class="n">y_gt</span> <span class="o">=</span> <span class="p">[</span><span class="n">Y_height_gravity</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="k">for</span> <span class="n">xt</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_gt</span><span class="p">,</span> <span class="n">y_gt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_15_0.png" src="_images/first-flight_15_0.png" />
+</div>
+</div>
+<p>That looks more resonable. The model did not get very high before gravity took over and pull the model back to Earth!</p>
+<p>If that graph looka a bit choppy, it is because we looked at the position at fixed points in time. If we look at more points, the curve will get smoother:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">x_gt2</span> <span class="o">=</span> <span class="p">[</span><span class="n">X_distance_gravity</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="k">for</span> <span class="n">xt</span> <span class="ow">in</span> <span class="n">t2</span><span class="p">]</span>
+<span class="n">y_gt2</span> <span class="o">=</span> <span class="p">[</span><span class="n">Y_height_gravity</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="k">for</span> <span class="n">xt</span> <span class="ow">in</span> <span class="n">t2</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_gt2</span><span class="p">,</span> <span class="n">y_gt2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_17_0.png" src="_images/first-flight_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="stepping-with-time">
+<h1>Stepping with time<a class="headerlink" href="#stepping-with-time" title="Permalink to this headline">¶</a></h1>
+<p>Let’s try this another way. In this example we will start off our model at time zero with its initial velocity. We will “fly the model at that speed and distance for a short amount of time which we will call <strong>dt</strong>. After that short flight we will adjust the velocity using our acceleration to calculate the change in velocity. The loop fil be fairly simple, so lets see what we get!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">vx</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span> 
+<span class="n">vy</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">32.2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">xp</span> <span class="o">=</span><span class="p">[]</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">xp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">yp</span> <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">vy</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">vx</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">vy</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="c1">#print(xp)</span>
+<span class="c1">#print(yp)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_19_0.png" src="_images/first-flight_19_0.png" />
+</div>
+</div>
+<p>This graph is alittle different from our last one. Let’s try a smaller time step:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vx</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span> 
+<span class="n">vy</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha_radians</span><span class="p">)</span>
+<span class="n">xp</span> <span class="o">=</span><span class="p">[]</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">xp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">yp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">vy</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">vx</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">vy</span> <span class="o">-</span> <span class="n">g</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="c1">#print(xp)</span>
+<span class="c1">#print(yp)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_21_0.png" src="_images/first-flight_21_0.png" />
+</div>
+</div>
+<p>This is a lot closer to our original graph. We can show the both, colored to show the difference:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_gt2</span><span class="p">,</span> <span class="n">y_gt2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_23_0.png" src="_images/first-flight_23_0.png" />
+</div>
+</div>
+<p>Our <em>approxomation</em> calculations are not correct, but they are close. If we make the time step even smaller, we will get closer and closer to the “real” plot. Mathematically we say:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{{dt}\to 0} f_{approx}(t) = f_{real}(t)
+\]</div>
+<p>In a lot of engineering work, we often cannot find the real function, but we can easily figure out the approximate function. We learn how to work with the errors we know will result from our approximations! (Mathematicians are never happy with this approximation scheme, they will spend hours searching for that “real” function!)</p>
+</div>
+<div class="section" id="flying-with-gravity">
+<h1>flying with gravity<a class="headerlink" href="#flying-with-gravity" title="Permalink to this headline">¶</a></h1>
+<p>To close out this discussion, let’s animate our new gravity solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filenames</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t2</span><span class="p">)):</span>
+    <span class="c1"># plot the line chart</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_gt2</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">y_gt2</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">y_gt2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">)</span>
+    
+    <span class="c1"># create file name and append it to a list</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span>
+    <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="c1"># save frame</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># build gif</span>
+<span class="k">with</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="s1">&#39;gravity-flight.gif&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;I&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">append_data</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        
+<span class="c1"># Remove files</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">filenames</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/first-flight_25_0.png" src="_images/first-flight_25_0.png" />
+</div>
+</div>
+<p>I added a ine that checks to see if our model has hit the ground, and stopped the loop if so.</p>
+<p><img alt="Gravity Flight" src="files/gravity-flight.gif" /></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="indoor-math/indoor-aerodynamics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Indoor Aerodynamics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="digital-torque-meter.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Digital Torque Meter</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Roie R. Black<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
