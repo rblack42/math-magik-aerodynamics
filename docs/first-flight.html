@@ -407,7 +407,7 @@ h = V_h t
 </div>
 </div>
 </div>
-<p><img alt="First Flight" src="files/first-flight.gif" /></p>
+<p><img alt="First Flight" src="_images/first-flight.gif" /></p>
 <p>Ok, not very exciting, but there it goes, heading off to outer space! At least we are making progress. Now on to gravity!</p>
 </div>
 <div class="section" id="adding-gravity">
@@ -443,8 +443,8 @@ h = V_h t
 <img alt="_images/first-flight_15_0.png" src="_images/first-flight_15_0.png" />
 </div>
 </div>
-<p>That looks more resonable. The model did not get very high before gravity took over and pull the model back to Earth!</p>
-<p>If that graph looka a bit choppy, it is because we looked at the position at fixed points in time. If we look at more points, the curve will get smoother:</p>
+<p>That looks more resonable. We added some “magic” code we will explain later to calculate the height for some time <strong>t</strong>. The model did not get very high before gravity took over and pulled the model back to Earth!</p>
+<p>If that graph looks a bit choppy, it is because we looked at the position at fixed points in time. If we look at more points, the curve will get smoother:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
@@ -499,7 +499,7 @@ h = V_h t
 <img alt="_images/first-flight_19_0.png" src="_images/first-flight_19_0.png" />
 </div>
 </div>
-<p>This graph is alittle different from our last one. Let’s try a smaller time step:</p>
+<p>This graph is a little different from our last one. Let’s try a smaller time step:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.05</span>
@@ -548,6 +548,7 @@ h = V_h t
 \[
 \lim_{{dt}\to 0} f_{approx}(t) = f_{real}(t)
 \]</div>
+<p>This expression says that the limit, as <strong>dt</strong> approaches zero, of our approximate function will equal our real function. We need to decide if our approximate function is good enough.</p>
 <p>In a lot of engineering work, we often cannot find the real function, but we can easily figure out the approximate function. We learn how to work with the errors we know will result from our approximations! (Mathematicians are never happy with this approximation scheme, they will spend hours searching for that “real” function!)</p>
 </div>
 <div class="section" id="flying-with-gravity">
@@ -587,7 +588,8 @@ h = V_h t
 </div>
 </div>
 <p>I added a ine that checks to see if our model has hit the ground, and stopped the loop if so.</p>
-<p><img alt="Gravity Flight" src="files/gravity-flight.gif" /></p>
+<p><img alt="Gravity Flight" src="_images/gravity-flight.gif" /></p>
+<p>That flight looks a lot more realistic. Unfortunately, my early models crashed into the ground much quicker. We have more to learn!</p>
 </div>
 
     <script type="text/x-thebe-config">
